@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  reporter_id: 1
+  store_id: 1
+  votes: 1
+  expired: false
+
+two:
+  reporter_id: 1
+  store_id: 1
+  votes: 1
+  expired: false
