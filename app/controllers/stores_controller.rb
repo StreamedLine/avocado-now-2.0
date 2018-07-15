@@ -1,4 +1,6 @@
 class StoresController < ApplicationController
+	before_action :authenticate_user,  only: [:create, :update]
+
 	def create
 		store = Store.new(store_params)
 		if store.save
