@@ -3,7 +3,7 @@ class Store < ApplicationRecord
 
 	has_many :reporters, :through => :reports
 
-	def active_stores
-
+	def self.active_stores
+		joins(:reports).where(:reports => {expired: false})
 	end
 end

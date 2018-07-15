@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_15_021703) do
+ActiveRecord::Schema.define(version: 2018_07_15_142503) do
 
   create_table "reporters", force: :cascade do |t|
     t.string "username"
@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 2018_07_15_021703) do
     t.integer "reporter_id"
     t.integer "store_id"
     t.integer "votes"
-    t.boolean "expired"
+    t.boolean "expired", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -1,6 +1,6 @@
 class ReportsController < ApplicationController
 	def index
-		render json: Report.all
+		render json: Store.active_stores
 	end
 
 	def create
@@ -22,7 +22,7 @@ class ReportsController < ApplicationController
 	    if report.update(report_params)
 	        render json: { status: 200, msg: 'report details have been updated.' }
 	    else 
-	    	render json: {error: report.errors.full_messages}}
+	    	render json: {error: report.errors.full_messages}
 	    end
 	end
 

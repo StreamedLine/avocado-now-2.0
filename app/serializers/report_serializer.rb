@@ -1,3 +1,4 @@
 class ReportSerializer < ActiveModel::Serializer
-    attributes :id, :reporter_id, :store_id
+    attributes :id, :store_id, :expired
+
 end
