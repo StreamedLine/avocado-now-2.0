@@ -17,5 +17,5 @@ Rails.application.routes.draw do
 
 	resources :stores, only: [:create, :update]
 
-	
+	resources :reports, only: [:index, :create, :update]
 end
