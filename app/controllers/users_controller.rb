@@ -20,6 +20,7 @@ class UsersController < ApplicationController
 	def create
 	  user = User.new(user_params)
 	  if user.save
+	  	user.reporter= Reporter.create(user_id: user.id, username: user.username, trustworthy: 100)
 	    render json: {status: 200, msg: 'User was created.'}
 	  end
 	end
