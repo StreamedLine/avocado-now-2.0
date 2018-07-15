@@ -1,0 +1,1 @@
+I origianlly wrote this with Sinatra, but being a favorite of mine, I decided to rewrite with a Rails API and a React front-end.

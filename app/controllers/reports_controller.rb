@@ -29,6 +29,6 @@ class ReportsController < ApplicationController
 	private
 
 	def report_params
-		params.require(:report).permit(:id, :store_id, :reporter_id)
+		params.require(:report).permit(:id, :store_id, :reporter_id, :expired)
 	end
 end
