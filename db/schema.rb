@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_15_142503) do
+ActiveRecord::Schema.define(version: 2018_07_15_220207) do
 
   create_table "reporters", force: :cascade do |t|
     t.string "username"
@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 2018_07_15_142503) do
     t.boolean "confirmed"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "ripeness", default: 4
   end
 
   create_table "users", force: :cascade do |t|
