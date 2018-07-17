@@ -20,8 +20,10 @@ class UsersController < ApplicationController
 	def create
 	  user = User.new(user_params)
 	  if user.save
-	  	user.reporter= Reporter.create(user_id: user.id, username: user.username, trustworthy: 100)
-	    render json: {status: 200, msg: 'User was created.'}
+	  	user.reporter = Reporter.create(user_id: user.id, username: user.username, trustworthy: 100)
+	    render json: {status: 200, msg: 'User was created.', username: user.username}
+	  else 
+	  	render json: {status: 400, errors: user.errors.full_messages}
 	  end
 	end
 
@@ -29,7 +31,9 @@ class UsersController < ApplicationController
 	def update
 	  user = User.find(params[:id])
 	  if user.update(user_params)
-	    render json: { status: 200, msg: 'User details have been updated.' }
+	    render json: {status: 200, msg: 'User details have been updated.' }
+	  else 
+	  	render json: {status: 200, msg: user.errors.full_messages}
 	  end
 	end
 
