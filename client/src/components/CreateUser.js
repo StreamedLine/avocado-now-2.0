@@ -5,11 +5,7 @@ import { connect } from 'react-redux';
 import Form from './CreateUserForm'
 
 class CreateUser extends Component {
-	constructor(props) {
-		super(props);
-
-	}
-
+	//pass as prop into form
 	handleOnSubmit = (e, {email, username, password}) => {
 		e.preventDefault();
 		this.props.createUser({email, username, password});
@@ -26,16 +22,19 @@ class CreateUser extends Component {
 
 		let content = "";
 
+		//loading or form
 		if (this.props.creatingUser) {
 			content = ( <h3>creating user</h3> );
 		} else {
 			content = ( <Form handleOnSubmit={this.handleOnSubmit} /> );
 		}
 
+		const errors = this.props.errors ? <div className="errors">{this.props.errors[0]}</div> : null;
+
 		return (
 			<div>
 				<h1>Signup Page</h1>
-				{this.props.errors && <div className="errors">{this.props.errors[0]}</div>}
+				{errors}
 				{content}
 			</div>
 		)
@@ -43,7 +42,8 @@ class CreateUser extends Component {
 }
 
 const mapStateToProps = ({usersReducer}) => {
-  return {creatingUser: usersReducer.creatingUser, errors: usersReducer.errors, redirect: usersReducer.redirect}
+	const { creatingUser, errors, redirect } = usersReducer;
+  return { creatingUser, errors, redirect }
 }
 
 const mapDispatchToProps = (dispatch) => {

@@ -12,6 +12,7 @@ const usersReducer = (state = initialState, action) => {
   	case 'CREATE_USER_STARTED':
   		return Object.assign({}, state, {creatingUser: true})
 
+
     case 'CREATED_USER':
     	let redirect = true,
   			errors = null;
@@ -21,8 +22,10 @@ const usersReducer = (state = initialState, action) => {
   		}
       return Object.assign({}, state, {creatingUser: false, redirect, errors});    
 
+
     case 'LOGIN_USER':
     		return Object.assign(state, {email: action.payload.email})
+
 
     default: 
       return state
