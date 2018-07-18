@@ -5,17 +5,21 @@ const initialState = {
 	username: "",
 	loggingIn: false,
 	loggedIn: false
-}
+};
 
 const usersReducer = (state = initialState, action) => {
+  let errors = null;
+
   switch (action.type) {
+    //1
   	case 'CREATE_USER_STARTED':
   		return Object.assign({}, state, {creatingUser: true})
 
 
+    //2
     case 'CREATED_USER':
-    	let redirect = true,
-  			errors = null;
+    	let redirect = true;
+
   		if (action.payload.errors.length) {
   			redirect = false;
   			errors = action.payload.errors;
@@ -23,10 +27,33 @@ const usersReducer = (state = initialState, action) => {
       return Object.assign({}, state, {creatingUser: false, redirect, errors});    
 
 
-    case 'LOGIN_USER':
-    		return Object.assign(state, {email: action.payload.email})
+    //3
+    case 'REDIRECTED_USER':
+      return Object.assign({}, state, {redirect: false})
 
 
+    //4
+    case 'LOGIN_STARTED':
+    	return Object.assign(state, {loggingIn: true})
+
+
+    //5
+    case 'LOGGED_IN_USER':
+    let loggedIn = true;
+
+      if (action.payload.errors.length) {
+        loggedIn = false;
+        errors = action.payload.errors;
+      }
+      return Object.assign({}, state, {loggingIn: false, loggedIn: true})
+
+
+    //6
+    case 'LOGGED_OUT':
+      return Object.assign({}, state, {loggedIn: false})
+
+
+    //default
     default: 
       return state
   }

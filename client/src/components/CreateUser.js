@@ -13,7 +13,7 @@ class CreateUser extends Component {
 
 	render() {
 		//SIGNUP PAGE
-		//may be loading
+		//may be submitting
 		//may need to direct to login
 
 		if (this.props.redirect) {
