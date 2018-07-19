@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { createUser } from '../actions/userActions'
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import Form from './CreateUserForm'
 
 class CreateUser extends Component {
@@ -14,10 +15,10 @@ class CreateUser extends Component {
 	render() {
 		//SIGNUP PAGE
 		//may be submitting
-		//may need to direct to login
+		//may need to redirect to login
 
 		if (this.props.redirect) {
-			console.log("Should direct to login page")
+			return <Redirect to='/login' />
 		}
 
 		let content = "";
