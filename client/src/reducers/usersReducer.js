@@ -13,7 +13,7 @@ const usersReducer = (state = initialState, action) => {
   switch (action.type) {
     //1
   	case 'CREATE_USER_STARTED':
-  		return Object.assign({}, state, {creatingUser: true})
+  		return Object.assign({}, state, {creatingUser: true, errors: []})
 
 
     //2
@@ -34,7 +34,7 @@ const usersReducer = (state = initialState, action) => {
 
     //4
     case 'LOGIN_STARTED':
-    	return Object.assign(state, {loggingIn: true})
+    	return Object.assign(state, {loggingIn: true, errors: []})
 
 
     //5
@@ -50,7 +50,12 @@ const usersReducer = (state = initialState, action) => {
 
     //6
     case 'LOGGED_OUT':
-      return Object.assign({}, state, {loggedIn: false})
+      let cleanup = {};
+      if (action.errors.length) {
+        cleanup.errors = action.errors;
+        cleanup.loggingIn = false;
+      }
+      return Object.assign({}, state, cleanup, {loggedIn: false})
 
 
     //default

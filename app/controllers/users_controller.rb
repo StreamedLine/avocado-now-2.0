@@ -33,7 +33,7 @@ class UsersController < ApplicationController
 	  if user.update(user_params)
 	    render json: {status: 200, msg: 'User details have been updated.' }
 	  else 
-	  	render json: {status: 200, msg: user.errors.full_messages}
+	  	render json: {status: 400, msg: user.errors.full_messages}
 	  end
 	end
 

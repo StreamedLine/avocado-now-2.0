@@ -1,18 +1,14 @@
 import React, { Component } from 'react';
 import './App.css';
-import CreateUser from './components/CreateUser';
-import LoginUser from './components/LoginUser';
-import {
-  Route,
-  Link
-} from 'react-router-dom';
+import Header from './components/Header';
+import UserRoutes from './components/UserRoutes';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <Route path='/signup' component={CreateUser} />
-        <Route path='/login' component={LoginUser}  />
+        <Header />  
+        <UserRoutes />
       </div>
     );
   }

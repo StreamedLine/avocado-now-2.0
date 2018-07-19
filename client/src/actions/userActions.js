@@ -15,6 +15,7 @@ const postWithHeadersWithAuth = (jwt) => {
 };
 
 
+//
 //actions
 
 export const createUser = ({email, username, password}) => {
@@ -68,9 +69,39 @@ export const loginUser = ({email, password}) => {
 			let errors = json.errors || []; 
 
 			dispatch({type: 'LOGGED_IN_USER', payload: {errors: errors}})
-		});
+		})
+		.catch(err => dispatch({type: 'LOGGED_OUT', errors: ["Wrong username/password"]}));
 	}
 };
+
+
+export const logoutUser = () => {
+	window.localStorage.removeItem('token');
+	return dispatch => dispatch({type: 'LOGGED_OUT', errors: []});
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

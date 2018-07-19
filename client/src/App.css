@@ -7,27 +7,23 @@ body {
   background-color: #aaa
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
-
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
-}
-
-.App-title {
+.header .links a {
+  margin: 2.5px;
   font-size: 1.5em;
+  text-decoration: none;
+  background-color: #ccc;
+  padding: 5px 10px;
+  border-radius: 10%;
+  transition: 0.4s ease;
+}
+.header .links a:hover {
+  text-decoration: underline;
+}
+.header .links a:active {
+  background-color: powderblue;
+  transition: 0s;
 }
 
-.App-intro {
-  font-size: large;
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.headerLink {
+  border-top: 2px solid green;
 }
