@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { NavLink } from 'react-router-dom';
-
+import { NavLink, withRouter } from 'react-router-dom';
 
 class Header extends Component {
 	render() { 
@@ -48,6 +47,6 @@ class Header extends Component {
 
 const mapStateToProps = ({usersReducer}) => {
 	return {loggedIn: usersReducer.loggedIn}
-}
+};
 
-export default connect(mapStateToProps, null)(Header);
+export default withRouter(connect(mapStateToProps, null)(Header));
