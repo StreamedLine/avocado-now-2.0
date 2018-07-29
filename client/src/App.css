@@ -27,3 +27,30 @@ body {
 .headerLink {
   border-top: 2px solid green;
 }
+
+.errors {
+  color: darkred;
+}
+
+.displayNone {
+  display: none;
+}
+
+.btn {
+  display: inline-block;
+  width: 100px;
+  cursor: pointer;
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid lightgrey;
+  border-radius: 10px;
+}
+
+.liveBtn:active {
+  background: lightgrey;
+}
+
+.disabledBtn {
+  opacity: .5;
+  cursor: auto;
+}

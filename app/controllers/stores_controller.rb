@@ -1,8 +1,14 @@
 class StoresController < ApplicationController
 	before_action :authenticate_user,  only: [:create, :update]
 
+	def index
+		stores = Store.all 
+		render json: stores
+	end
+
 	def create
 		store = Store.new(store_params)
+
 		if store.save
 			render json: store
 		else
@@ -22,6 +28,6 @@ class StoresController < ApplicationController
 	private
 
 	def store_params
-		params.require(:store).permit(:id, :address, :zip, :name, :website)
+		params.require(:store).permit(:id, :address, :zip, :name, :website, :ripeness)
 	end
 end

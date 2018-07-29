@@ -15,7 +15,7 @@ Rails.application.routes.draw do
 	patch  '/user/:id'       => 'users#update'
 	delete '/user/:id'       => 'users#destroy'
 
-	resources :stores, only: [:create, :update]
+	resources :stores, only: [:index, :create, :update]
 
 	resources :reports, only: [:index, :create, :update]
 end
