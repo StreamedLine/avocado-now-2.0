@@ -8,11 +8,11 @@ const postWithHeaders = {
   }
 };
 
-const postWithHeadersWithAuth = (jwt) => {
-	const pwhwa = Object.assign({}, postWithHeaders);
-	pwhwa.headers["Authorization"] = `Bearer ${jwt}`;
-	return pwhwa
-};
+// const postWithHeadersWithAuth = (jwt) => {
+// 	const pwhwa = Object.assign({}, postWithHeaders);
+// 	pwhwa.headers["Authorization"] = `Bearer ${jwt}`;
+// 	return pwhwa
+// };
 
 
 //

@@ -20,22 +20,15 @@ class LoginUser extends Component {
 			console.log("Should direct to home page")
 		}
 
-		let content = "";
-
-		//loading or form
-		if (this.props.loggingInUser) {
-			content = ( <h3>logging in</h3> );
-		} else {
-			content = ( <Form handleOnSubmit={this.handleOnSubmit} /> );
-		}
-
+		const message = this.props.loggingInUser ? <h3>logging in..please wait</h3> : null;
 		const errors = this.props.errors ? <div className="errors">{this.props.errors[0]}</div> : null;
 
 		return (
 			<div>
 				<h1>Login Page</h1>
+				{message}
 				{errors}
-				{content}
+				<Form handleOnSubmit={this.handleOnSubmit} />
 			</div>
 		)
 	}

@@ -20,23 +20,16 @@ class CreateUser extends Component {
 		if (this.props.redirect) {
 			return <Redirect to='/login' />
 		}
-
-		let content = "";
-
-		//loading or form
-		if (this.props.creatingUser) {
-			content = ( <h3>creating user</h3> );
-		} else {
-			content = ( <Form handleOnSubmit={this.handleOnSubmit} /> );
-		}
-
+	
+		const message = this.props.creatingUser ? <h3>Creating user..please wait</h3> : null;
 		const errors = this.props.errors ? <div className="errors">{this.props.errors[0]}</div> : null;
 
 		return (
 			<div>
 				<h1>Signup Page</h1>
+				{message}
 				{errors}
-				{content}
+				<Form handleOnSubmit={this.handleOnSubmit} />
 			</div>
 		)
 	}
