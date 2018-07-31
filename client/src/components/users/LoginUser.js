@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { loginUser } from '../../actions/userActions'
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import Form from './LoginUserForm'
 
 class LoginUser extends Component {
@@ -17,7 +18,7 @@ class LoginUser extends Component {
 		//may need to direct to homepage
 
 		if (this.props.loggedIn) {
-			console.log("Should direct to home page")
+			return <Redirect to='/' />
 		}
 
 		const message = this.props.loggingInUser ? <h3>logging in..please wait</h3> : null;
