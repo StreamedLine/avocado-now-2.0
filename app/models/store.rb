@@ -7,6 +7,7 @@ class Store < ApplicationRecord
 	end
 
 	def self.search(zip)
-		active_stores.where(:zip => zip) 
+		#active_stores.where(:zip => zip) 
+		where(:zip => zip) #dev only. above line is correct
 	end
 end

@@ -20,9 +20,9 @@ export default class CreateUserForm extends Component {
 
 	render() {
 		const form = (
-  	  <form onSubmit={(e) => this.props.handleOnSubmit(e, this.state)}>
-  	  	<h3>Add New Store!</h3> 
-  	  	<FriendlyForm slides={[
+  	  	<FriendlyForm
+  	  		handleOnSubmit={(e) => this.props.handleOnSubmit(e, this.state)} 
+  	  		slides={[
 	  	  	<p>
 		    	  <label htmlFor="zip">zip</label>
 	  	    	<input type="zip" value={this.state.zip} name="zip" onChange={this.handleOnChange} />
@@ -45,11 +45,13 @@ export default class CreateUserForm extends Component {
 		      </p>,
 			    <input autoFocus type="submit" value="Add Store" />
 		    ]} />
-	    </form>	
 		);
 
 		return (
-			(form)
+			<div>
+				<h3>Add New Store!</h3> 
+				{form}
+			</div>
 		)
 	}
 }

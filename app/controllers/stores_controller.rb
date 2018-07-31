@@ -3,19 +3,19 @@ class StoresController < ApplicationController
 
 	def index
 		stores = Store.all 
-		render json: stores
+		render json: {stores: stores}
 	end
 
 	def search
 		stores = Store.search(params[:zip])
-		render json: stores
+		render json: {stores: stores}
 	end
 
 	def create
 		store = Store.new(store_params)
 
 		if store.save
-			render json: store
+			render json: {store: store}
 		else
 			render json: {error: store.errors.full_messages}
 		end
@@ -24,7 +24,7 @@ class StoresController < ApplicationController
 	def update
 		store = Store.find(store_params[:id])
 		if store.update(store_params)
-		  render json: store
+		  render json: {store: store}
 		else
 		  render json: {error: store.errors.full_messages}
 		end

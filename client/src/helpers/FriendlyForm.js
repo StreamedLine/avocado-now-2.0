@@ -7,7 +7,8 @@ export default class FriendlyForm extends Component {
 		this.state = {
 			count: 0,
 			next: true,
-			prev: false
+			prev: false,
+			completed: false
 		}
 	}
 
@@ -15,7 +16,7 @@ export default class FriendlyForm extends Component {
 		let n = this.state.count + 1;
 		if (n >= this.props.slides.length - 1) {
 			n = this.props.slides.length - 1;
-			this.setState({count: n, next: false})
+			this.setState({count: n, next: false, completed: true})
 		}
 		this.setState({count: n, prev: true})
 	}
@@ -30,21 +31,23 @@ export default class FriendlyForm extends Component {
 	}
 
 	handleKeyPress = (e) => {
-    if (e.key.toLowerCase() === 'enter') {
+    if (e.key.toLowerCase() === 'enter' && !this.state.completed) {
+    		e.preventDefault();
         this.nextClick();
     }
 	}
 
 	render() {
 		let displayed = [this.props.slides.find((slide, i) => i == this.state.count)]
-		if (this.state.count === this.props.slides.length - 1) {
+		if (this.state.completed) {
 			displayed = displayed.concat(this.props.slides.filter((s, i) => i !== this.state.count));
 		}
 		
 		return (
 			<div>
-				{displayed}
-
+				<form onKeyPress={this.handleKeyPress} onSubmit={this.props.handleOnSubmit}>
+					{displayed}
+				</form>
 				{this.state.next &&
 					<div>
 						<p className={`btn ${this.state.prev ? 'liveBtn' : 'disabledBtn'}`} onClick={this.prevClick}>previous</p>

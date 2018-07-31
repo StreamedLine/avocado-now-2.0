@@ -43,7 +43,7 @@ const storesReducer = (state = initialState, action) => {
         errors = action.payload.errors;
       }
       
-      return Object.assign({}, state, {searching: false, redirect, errors})
+      return Object.assign({}, state, {stores: action.payload.stores, searching: false, redirect, errors})
 
 
     //default

@@ -17,9 +17,9 @@ class CreateStore extends Component {
 		//may be submitting
 		//may need to redirect to login
 
-		// if (this.props.redirect) {
-		// 	return <Redirect to='/somewhere' />
-		// }
+		if (this.props.redirect) {
+			return <Redirect to='/' />
+		}
 	
 		const message = this.props.creatingStore ? <h3>Creating store..please wait</h3> : null;
 		const errors = this.props.errors ? <div className="errors">{this.props.errors[0]}</div> : null;
