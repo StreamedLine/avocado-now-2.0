@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
+import { Route } from 'react-router-dom';
 import './App.css';
 import Header from './components/Header';
 import UserRoutes from './components/users/UserRoutes';
-import CreateStores from './components/stores/CreateStores';
+import StoreRoutes from './components/stores/StoreRoutes';
+import Home from './components/Home';
+
 
 class App extends Component {
   render() {
@@ -10,8 +13,8 @@ class App extends Component {
       <div className="App">
         <Header />  
         <UserRoutes />
-
-        <CreateStores />
+				<StoreRoutes />
+				<Route exact path='/' component={Home} />
       </div>
     );
   }

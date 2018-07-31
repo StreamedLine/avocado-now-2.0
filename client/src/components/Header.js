@@ -14,6 +14,10 @@ class Header extends Component {
 			links = (
 				<div className='links'>
 					<NavLink 
+					  to="/"
+					  activeClassName="headerLink"
+					>home</NavLink>
+					<NavLink 
 					  to="/login"
 					  activeClassName="headerLink"
 					>login</NavLink>
@@ -28,9 +32,17 @@ class Header extends Component {
 			links = (
 				<div className='links'>
 					<NavLink 
+					  to="/"
+					  activeClassName="headerLink"
+					>home</NavLink>
+					<NavLink 
 					  to="/logout"
 					  activeClassName="headerLink"
 					>logout</NavLink>
+					<NavLink 
+					  to="/add-store"
+					  activeClassName="headerLink"
+					>add-store</NavLink>
 				</div>
 			)
 		}

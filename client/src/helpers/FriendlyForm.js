@@ -29,17 +29,28 @@ export default class FriendlyForm extends Component {
 		this.setState({count: n, next: true})
 	}
 
+	handleKeyPress = (e) => {
+    if (e.key.toLowerCase() === 'enter') {
+        this.nextClick();
+    }
+	}
+
 	render() {
-		let displayed = this.props.slides.find((slide, i) => i == this.state.count)
+		let displayed = [this.props.slides.find((slide, i) => i == this.state.count)]
 		if (this.state.count === this.props.slides.length - 1) {
-			displayed = [displayed].concat(this.props.slides.filter((s, i) => i !== this.state.count))
+			displayed = displayed.concat(this.props.slides.filter((s, i) => i !== this.state.count));
 		}
+		
 		return (
 			<div>
 				{displayed}
-				
-				<p className={`btn ${this.state.prev ? 'liveBtn' : 'disabledBtn'}`} onClick={this.prevClick}>previous</p>
-				<p className={`btn ${this.state.next ? 'liveBtn' : 'disabledBtn'}`} onClick={this.nextClick}>next</p>
+
+				{this.state.next &&
+					<div>
+						<p className={`btn ${this.state.prev ? 'liveBtn' : 'disabledBtn'}`} onClick={this.prevClick}>previous</p>
+						<p tabIndex={0} onKeyPress={this.handleKeyPress} className={`btn ${this.state.next ? 'liveBtn' : 'disabledBtn'}`} onClick={this.nextClick}>next</p>
+					</div>
+				}
 			</div>
 		)
 	}

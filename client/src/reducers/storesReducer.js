@@ -2,11 +2,14 @@ const initialState = {
   creatingStore: false,
   errors: [],
   redirect: false,
-  stores: []
+  stores: [],
+  searching: false,
+  query: ''
 };
 
 const storesReducer = (state = initialState, action) => {
   let errors = null;
+  let redirect = false;
 
   switch (action.type) {
 
@@ -17,13 +20,31 @@ const storesReducer = (state = initialState, action) => {
 
     //2
     case 'CREATED_STORE':
-      let redirect = true;
+      redirect = true;
 
       if (action.payload.errors.length) {
         redirect = false;
         errors = action.payload.errors;
       }
       return Object.assign({}, state, {creatingStore: false, redirect, errors});
+
+
+    //3
+    case 'SEARCH_STARTED':
+      return Object.assign({}, state, {searching: true, errors: []})
+
+
+    //4
+    case 'RETRIEVED_STORES_BY_ZIP':
+      redirect = true;
+
+      if (action.payload.errors.length) {
+        redirect = false;
+        errors = action.payload.errors;
+      }
+      
+      return Object.assign({}, state, {searching: false, redirect, errors})
+
 
     //default
     default: 

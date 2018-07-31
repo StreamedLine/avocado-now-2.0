@@ -32,6 +32,10 @@ body {
   color: darkred;
 }
 
+.displayInline {
+  display: inline-block;
+}
+
 .displayNone {
   display: none;
 }

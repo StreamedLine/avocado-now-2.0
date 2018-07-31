@@ -16,6 +16,7 @@ Rails.application.routes.draw do
 	delete '/user/:id'       => 'users#destroy'
 
 	resources :stores, only: [:index, :create, :update]
-
+	get    'stores/zip/:zip' => 'stores#search'
+	 
 	resources :reports, only: [:index, :create, :update]
 end

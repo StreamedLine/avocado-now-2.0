@@ -6,6 +6,11 @@ class StoresController < ApplicationController
 		render json: stores
 	end
 
+	def search
+		stores = Store.search(params[:zip])
+		render json: stores
+	end
+
 	def create
 		store = Store.new(store_params)
 

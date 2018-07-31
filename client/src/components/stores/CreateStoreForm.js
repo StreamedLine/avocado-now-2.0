@@ -43,9 +43,7 @@ export default class CreateUserForm extends Component {
 		      	<label htmlFor="ripeness">ripeness</label>
 		      	<input type="ripeness" value={this.state.ripeness} name="ripeness" onChange={this.handleOnChange} />
 		      </p>,
-		      <p>
-			      <input type="submit" value="Add Store" />
-			    </p>
+			    <input autoFocus type="submit" value="Add Store" />
 		    ]} />
 	    </form>	
 		);
